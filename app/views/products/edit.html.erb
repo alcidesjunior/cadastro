@@ -1,0 +1,47 @@
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<h1>Editar produto</h1><br>
+<%= form_for :product, url: product_path, method: :patch do |f| %>
+<% if @product.errors.any? %>
+<div id="error_explanation">
+<h2>
+	<%= pluralize(@product.errors.count, "error")%>
+this product from being saved: 
+</h2>
+<ul>
+	<% @product.errors.full_messages.each do |msg|%>
+		<li><%=msg%></li>
+	<% end %>
+</ul>
+</div>
+<% end %>
+<div class="form-group">
+<div class="col-sm-2">
+	<label><%= f.label :produto%></label>
+	<%= f.text_field :produto, :class => "form-control"%>
+	</div>
+</div>
+<br><br><br><br><br>
+<div class="form-group">
+<div class="col-sm-2">
+	<%= f.label :valor%>
+	<%= f.text_field :valor, :class => "form-control"%>
+</div>
+</div>
+<br><br><br>
+<div class="form-group">
+<div class="col-sm-2">
+	<%= f.submit :Atualizar, :class => "btn btn-success"%>
+</div>
+</div>
+<% end %>
+<br><br>
+<div class="form-group">
+<div class="col-sm-2"><a href="/" class="glyphicon glyphicon-hand-left"> Voltar</a></div>
+</div>

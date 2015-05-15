@@ -1,0 +1,35 @@
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<nav class="navbar navbar-inverse">
+  <ul class="nav navbar-nav">
+  	<li> <a href="/products/new">Adicionar produto</a></li>
+  </ul>
+ 
+</nav>
+
+<table class="table table-striped">
+	<tr>
+		<th>#Id</th>
+		<th>#Produto</th>
+		<th>#Valor</th>
+		<th colspan="3" class="danger"><center>Opções</center></th>
+	</tr>
+	<% @products.each do |product| %>
+		<tr>
+			<td><%= product.id%></td>
+			<td><%= product.produto%></td>
+			<td><%= product.valor%></td>
+			<td><a href="<%=product_path(product)%>" class="btn btn-success">Ver</a></td>
+			<td><a href="<%=edit_product_path(product)%>" class="btn btn-warning">Editar</a></td>
+			<td><%= link_to 'Excluir', product_path(product),
+              method: :delete,
+              data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+		</tr>
+	<% end %>
+</table>
